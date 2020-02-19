@@ -7,22 +7,23 @@ const Container = styled.main`
 	margin: 0 auto;
 	margin-bottom: 2em;
 `
-const List = styled.section`
+const List = styled.div`
 	display: flex;
 	flex-wrap: row wrap;
 	div {
-		flex: 1 0 auto;
+		flex: 1;
 		text-align: center;
 		vertical-align: middle;
 		border: 1px solid;
 		margin-right: -1px;
+		margin-bottom: -1px;
 		position: relative;
 		:before {
 			content: '';
 			float: left;
 			padding-top: 100%;
 		}
-		p {
+		a {
 			margin: 0;
 			position: absolute;
 			top: 50%;
