@@ -1,4 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
+import Header from './Header'
+import Breeds from './Breeds'
 
-export default () => <h1>pes</h1>
+const Container = styled.div`margin: 1.25em;`
+
+export default () => (
+	<Container>
+		<Header />
+		<Breeds />
+	</Container>
+)
