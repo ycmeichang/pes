@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Breed from './Breed'
@@ -34,27 +34,53 @@ const List = styled.div`
 	}
 `
 
-export default () => (
-	<Router>
-		<Container>
-			<div>A</div>
-			<hr />
-			<List>
-				<div>
-					<p>
-						<Link to='/breed'>breed 1</Link>
-					</p>
-				</div>
-				<div>
-					<p>breed 2</p>
-				</div>
-				<div>
-					<p>breed 3</p>
-				</div>
-			</List>
-		</Container>
-		<Switch>
-			<Route path='/breed' component={Breed} />
-		</Switch>
-	</Router>
-)
+class Breeds extends Component {
+	state = { firstLetter: '' }
+	handleChange = ({ target: { value } }) => {
+		this.setState({ firstLetter: value })
+	}
+	render() {
+		const { breeds } = this.props
+		const { firstLetter } = this.state
+		const letters = []
+		for (let i = 65; i <= 90; i++) {
+			letters.push(String.fromCharCode(i))
+		}
+		return (
+			<Router>
+				<Container>
+					<div>
+						{letters.map((letter, index) => (
+							<input key={index} type='button' value={letter} onClick={this.handleChange} />
+						))}
+					</div>
+					<h4>{firstLetter ? firstLetter : ''}</h4>
+					<hr />
+					{breeds
+						.reduce((accumulator, _, currentIndex, array) => {
+							if (currentIndex % 3 === 0) accumulator.push(array.slice(currentIndex, currentIndex + 3))
+							return accumulator
+						}, [])
+						.map((breeds, index) => (
+							<List key={index}>
+								<div key={breeds[0]}>
+									<Link to='/breed'>{breeds[0]}</Link>
+								</div>
+								<div key={breeds[1]}>
+									<Link to='/breed'>{breeds[1]}</Link>
+								</div>
+								<div key={breeds[2]}>
+									<Link to='/breed'>{breeds[2]}</Link>
+								</div>
+							</List>
+						))}
+				</Container>
+				<Switch>
+					<Route path='/breed' component={Breed} />
+				</Switch>
+			</Router>
+		)
+	}
+}
+
+export default Breeds
