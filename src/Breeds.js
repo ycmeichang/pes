@@ -58,9 +58,9 @@ class Breeds extends Component {
 					<h4>{firstLetter ? firstLetter : ''}</h4>
 					<hr />
 					{breeds
-						.reduce((accumulator, _, currentIndex, array) => {
-							if (currentIndex % 3 === 0) accumulator.push(array.slice(currentIndex, currentIndex + 3))
-							return accumulator
+						.reduce((acc, _, idx, src) => {
+							if (idx % 3 === 0) acc.push(src.slice(idx, idx + 3))
+							return acc
 						}, [])
 						.map((breeds, index) => (
 							<List key={index}>
