@@ -38,6 +38,7 @@ class Breeds extends Component {
 	state = { firstLetter: '' }
 	handleChange = ({ target: { value } }) => {
 		this.setState({ firstLetter: value })
+		this.props.handleFilter(value)
 	}
 	render() {
 		const { breeds } = this.props

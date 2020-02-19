@@ -27,12 +27,18 @@ class App extends Component {
 			}
 		)
 	}
+	handleFilter = (value) => {
+		const { breeds } = this.state
+		this.setState({
+			breeds: breeds.filter((breed) => breed.startsWith(value.toLowerCase()))
+		})
+	}
 	render() {
 		const { breeds } = this.state
 		return (
 			<Container>
 				<Header />
-				<Breeds breeds={breeds} />
+				<Breeds breeds={breeds} handleFilter={this.handleFilter} />
 			</Container>
 		)
 	}
