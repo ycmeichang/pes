@@ -43,17 +43,32 @@ const Breed = () => {
 		<Container>
 			<h4>Breed: {id}</h4>
 			<hr />
-			<List>
-				<div>
-					<img alt='' src={mockImg} />
-				</div>
-				<div>
-					<img alt='' src={mockImg} />
-				</div>
-				<div>
-					<img alt='' src={mockImg} />
-				</div>
-			</List>
+			{images
+				.reduce((acc, _, idx, src) => {
+					if (idx % 3 === 0) {
+						acc.push(src.slice(idx, idx + 3))
+					}
+					return acc
+				}, [])
+				.map((images, index) => (
+					<List key={index}>
+						<Image
+							style={{
+								backgroundImage: `url(${images[0]})`
+							}}
+						/>
+						<Image
+							style={{
+								backgroundImage: `url(${images[1]})`
+							}}
+						/>
+						<Image
+							style={{
+								backgroundImage: `url(${images[2]})`
+							}}
+						/>
+					</List>
+				))}
 		</Container>
 	)
 }
