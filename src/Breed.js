@@ -6,25 +6,25 @@ const Container = styled.main`
 	margin: 0 auto;
 	margin-bottom: 2em;
 `
-const List = styled.section`
+const List = styled.div`
 	display: flex;
 	flex-wrap: row wrap;
-	div {
-		flex: 1;
-		text-align: center;
-		vertical-align: middle;
-		border: 1px solid;
-		margin-right: -1px;
-		position: relative;
-		:before {
-			content: '';
-			float: left;
-			padding-top: 100%;
-		}
-		img {
-			max-width: 100%;
-		}
+`
+const Image = styled.div`
+	flex: 1;
+	text-align: center;
+	vertical-align: middle;
+	border: 1px solid;
+	margin-right: -1px;
+	position: relative;
+	:before {
+		content: '';
+		float: left;
+		padding-top: 100%;
 	}
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 `
 
 const Breed = () => {
