@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
 
@@ -29,6 +29,16 @@ const List = styled.section`
 
 const Breed = () => {
 	const { id } = useParams()
+	const [ images, setImages ] = useState([])
+	const [ hasError, setHasError ] = useState(false)
+	async function fetchData() {
+		//use backtips and ${} to include a variable inside url
+		const res = await fetch(`https://dog.ceo/api/breed/${id}/images`)
+		res.json().then((res) => setImages(res.message)).catch((error) => setHasError(error))
+	}
+	useEffect(() => {
+		fetchData()
+	}, [])
 	return (
 		<Container>
 			<h4>Breed: {id}</h4>
