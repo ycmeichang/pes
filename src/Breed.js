@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
 
 const Container = styled.main`
 	margin: 0 auto;
@@ -26,11 +27,11 @@ const List = styled.section`
 	}
 `
 
-export default () => {
-	const mockImg = 'https://cdn.shopify.com/s/files/1/1061/1924/products/Dog_Emoji_large.png?v=1571606065'
+const Breed = () => {
+	const { id } = useParams()
 	return (
 		<Container>
-			<div>breed 1</div>
+			<h4>Breed: {id}</h4>
 			<hr />
 			<List>
 				<div>
@@ -46,3 +47,5 @@ export default () => {
 		</Container>
 	)
 }
+
+export default Breed

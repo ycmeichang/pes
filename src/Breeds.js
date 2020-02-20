@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import Breed from './Breed'
+import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
 
 const Container = styled.main`
 	margin: 0 auto;
@@ -48,38 +47,33 @@ class Breeds extends Component {
 			letters.push(String.fromCharCode(i))
 		}
 		return (
-			<Router>
-				<Container>
-					<div>
-						{letters.map((letter, index) => (
-							<input key={index} type='button' value={letter} onClick={this.handleChange} />
-						))}
-					</div>
-					<h4>{firstLetter ? firstLetter : ''}</h4>
-					<hr />
-					{breeds
-						.reduce((acc, _, idx, src) => {
-							if (idx % 3 === 0) acc.push(src.slice(idx, idx + 3))
-							return acc
-						}, [])
-						.map((breeds, index) => (
-							<List key={index}>
-								<div key={breeds[0]}>
-									<Link to='/breed'>{breeds[0]}</Link>
-								</div>
-								<div key={breeds[1]}>
-									<Link to='/breed'>{breeds[1]}</Link>
-								</div>
-								<div key={breeds[2]}>
-									<Link to='/breed'>{breeds[2]}</Link>
-								</div>
-							</List>
-						))}
-				</Container>
-				<Switch>
-					<Route path='/breed' component={Breed} />
-				</Switch>
-			</Router>
+			<Container>
+				<div>
+					{letters.map((letter, index) => (
+						<input key={index} type='button' value={letter} onClick={this.handleChange} />
+					))}
+				</div>
+				<h4>{firstLetter ? firstLetter : ''}</h4>
+				<hr />
+				{breeds
+					.reduce((acc, _, idx, src) => {
+						if (idx % 3 === 0) acc.push(src.slice(idx, idx + 3))
+						return acc
+					}, [])
+					.map((breeds, index) => (
+						<List key={index}>
+							<div key={breeds[0]}>
+								<Link to={'/' + breeds[0]}>{breeds[0]}</Link>
+							</div>
+							<div key={breeds[1]}>
+								<Link to={'/' + breeds[1]}>{breeds[1]}</Link>
+							</div>
+							<div key={breeds[2]}>
+								<Link to={'/' + breeds[2]}>{breeds[2]}</Link>
+							</div>
+						</List>
+					))}
+			</Container>
 		)
 	}
 }
