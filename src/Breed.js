@@ -31,10 +31,14 @@ const Breed = () => {
 	const { id } = useParams()
 	const [ images, setImages ] = useState([])
 	const [ hasError, setHasError ] = useState(false)
-	async function fetchData() {
-		//use backtips and ${} to include a variable inside url
-		const res = await fetch(`https://dog.ceo/api/breed/${id}/images`)
-		res.json().then((res) => setImages(res.message)).catch((error) => setHasError(error))
+	const fetchData = async () => {
+		try {
+			const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
+			const json = await response.json()
+			setImages(json.message)
+		} catch (error) {
+			setHasError(error)
+		}
 	}
 	useEffect(() => {
 		fetchData()
