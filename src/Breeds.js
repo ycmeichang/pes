@@ -8,9 +8,10 @@ const Container = styled.main`
 `
 const List = styled.div`
 	display: flex;
-	flex-wrap: row wrap;
+	flex-wrap: wrap;
 	div {
-		flex: 1;
+		flex-base: 100;
+		flex-grow: 1;
 		text-align: center;
 		vertical-align: middle;
 		border: 1px solid;
@@ -51,7 +52,21 @@ class Breeds extends Component {
 		for (let i = 0; i < breeds.length; i++) {
 			const key = breeds[i].charAt(0)
 			groupedBreeds[key] = groupedBreeds[key].concat(breeds[i])
+			// 2.
+			// if (!groupedBreeds[key]) {
+			// 	groupedBreeds[key] = [ breeds[j] ]
+			// } else {
+			// 	groupedBreeds[key] = groupedBreeds[key].concat(breeds[j])
+			// }
+
+			// 1.
+			// groupedBreeds[key] = (groupedBreeds[key] || []).concat(breeds[j])
 		}
+		// const groupedBreeds = breeds.reduce((acc, cur) => {
+		// 	const key = cur.charAt(0).toLowerCase()
+		// 	acc[key] = (acc[key] || []).concat(cur)
+		// 	return acc
+		// }, {})
 		return (
 			<Container>
 				<div>
@@ -63,7 +78,14 @@ class Breeds extends Component {
 					<div>
 						<h4>{key}</h4>
 						<hr />
-						{groupedBreeds[key]
+						<List>
+							{groupedBreeds[key].map((breed, index) => (
+								<div key={index}>
+									<Link to={`/${breed}`}>{breed}</Link>
+								</div>
+							))}
+						</List>
+						{/* {groupedBreeds[key]
 							.reduce((acc, _, idx, src) => {
 								if (idx % 3 === 0) acc.push(src.slice(idx, idx + 3))
 								return acc
@@ -80,9 +102,10 @@ class Breeds extends Component {
 										<Link to={`/${groupedBreeds[2]}`}>{groupedBreeds[2]}</Link>
 									</div>
 								</List>
-							))}
+							))} */}
 					</div>
 				))}
+				{/* <h4>{firstLetter ? firstLetter : ''}</h4>
 				<hr />
 				{breeds
 					.reduce((acc, _, idx, src) => {
@@ -101,7 +124,7 @@ class Breeds extends Component {
 								<Link to={'/' + breeds[2]}>{breeds[2]}</Link>
 							</div>
 						</List>
-					))}
+					))} */}
 			</Container>
 		)
 	}

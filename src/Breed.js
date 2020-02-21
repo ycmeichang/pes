@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route, Link, useParams } from 'react-router-dom'
 
@@ -27,6 +27,17 @@ const Image = styled.div`
 	background-size: cover;
 `
 
+// class Breed extends Component {
+// 	this.state = { images: [] }
+
+// 	const handle = () => {
+// 		const images = []
+// 		this.setState({ images})
+// 	}
+// 	render() {
+// 		return //
+// 	}
+// }
 const Breed = () => {
 	const { id } = useParams()
 	const [ images, setImages ] = useState([])
