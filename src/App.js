@@ -14,20 +14,20 @@ class App extends Component {
 		breeds: []
 	}
 	componentDidMount() {
-		fetch('https://dog.ceo/api/breeds/list/all').then((res) => res.json()).then(
-			(result) => {
+		fetch('https://dog.ceo/api/breeds/list/all')
+			.then((response) => response.json())
+			.then((response) => {
 				this.setState({
 					isLoaded: true,
-					breeds: Object.keys(result.message)
+					breeds: Object.keys(response.message)
 				})
-			},
-			(error) => {
+			})
+			.catch((error) => {
 				this.setState({
 					isLoaded: true,
 					error
 				})
-			}
-		)
+			})
 	}
 	handleFilter = (value) => {
 		const { breeds } = this.state
