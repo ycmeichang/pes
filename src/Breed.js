@@ -31,18 +31,32 @@ const Breed = () => {
 	const { id } = useParams()
 	const [ images, setImages ] = useState([])
 	const [ hasError, setHasError ] = useState(false)
-	const fetchData = async () => {
-		try {
-			const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
-			const json = await response.json()
-			setImages(json.message)
-		} catch (error) {
-			setHasError(error)
-		}
-	}
-	useEffect(() => {
-		fetchData()
-	}, [])
+	// const fetchData = async () => {
+	// 	try {
+	// 		const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
+	// 		const json = await response.json()
+	// 		setImages(json.message)
+	// 	} catch (error) {
+	// 		setHasError(error)
+	// 	}
+	// }
+	// useEffect(() => fetchData(), [ id ])
+	useEffect(
+		() => {
+			const fetchData = async () => {
+				try {
+					//await promise to be either resolved/rejected
+					const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
+					const json = await response.json()
+					setImages(json.status === 'error' ? [] : json.message)
+				} catch (error) {
+					setHasError(error)
+				}
+			}
+			fetchData()
+		},
+		[ id ]
+	)
 	return (
 		<Container>
 			<h4>Breed: {id}</h4>
