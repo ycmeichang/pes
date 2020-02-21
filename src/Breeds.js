@@ -43,8 +43,14 @@ class Breeds extends Component {
 		const { breeds } = this.props
 		const { firstLetter } = this.state
 		const letters = []
+		const groupedBreeds = {}
 		for (let i = 65; i <= 90; i++) {
 			letters.push(String.fromCharCode(i))
+			groupedBreeds[String.fromCharCode(i).toLowerCase()] = []
+		}
+		for (let i = 0; i < breeds.length; i++) {
+			const key = breeds[i].charAt(0)
+			groupedBreeds[key] = groupedBreeds[key].concat(breeds[i])
 		}
 		return (
 			<Container>
@@ -53,7 +59,30 @@ class Breeds extends Component {
 						<input key={index} type='button' value={letter} onClick={this.handleChange} />
 					))}
 				</div>
-				<h4>{firstLetter ? firstLetter : ''}</h4>
+				{Object.keys(groupedBreeds).map((key) => (
+					<div>
+						<h4>{key}</h4>
+						<hr />
+						{groupedBreeds[key]
+							.reduce((acc, _, idx, src) => {
+								if (idx % 3 === 0) acc.push(src.slice(idx, idx + 3))
+								return acc
+							}, [])
+							.map((groupedBreeds, index) => (
+								<List key={index}>
+									<div>
+										<Link to={`/${groupedBreeds[0]}`}>{groupedBreeds[0]}</Link>
+									</div>
+									<div>
+										<Link to={`/${groupedBreeds[1]}`}>{groupedBreeds[1]}</Link>
+									</div>
+									<div>
+										<Link to={`/${groupedBreeds[2]}`}>{groupedBreeds[2]}</Link>
+									</div>
+								</List>
+							))}
+					</div>
+				))}
 				<hr />
 				{breeds
 					.reduce((acc, _, idx, src) => {
