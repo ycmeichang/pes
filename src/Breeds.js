@@ -10,10 +10,8 @@ const List = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	div {
-		flex-base: 100;
-		flex-grow: 1;
+		flex-basis: 33%;
 		text-align: center;
-		vertical-align: middle;
 		border: 1px solid;
 		margin-right: -1px;
 		margin-bottom: -1px;

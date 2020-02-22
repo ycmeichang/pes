@@ -8,10 +8,10 @@ const Container = styled.main`
 `
 const List = styled.div`
 	display: flex;
-	flex-wrap: row wrap;
+	flex-wrap: wrap;
 `
 const Image = styled.div`
-	flex: 1;
+	flex-basis: 33%;
 	text-align: center;
 	vertical-align: middle;
 	border: 1px solid;
