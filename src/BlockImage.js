@@ -26,17 +26,17 @@ const Content = styled.div`
 	background-size: cover;
 `
 
-const BlockImage = ({ title, detail }) => {
+const BlockImage = ({ title, items }) => {
 	return (
 		<Container>
 			<h4>Breed: {title}</h4>
 			<hr />
 			<Wrap>
-				{detail.map((detail, index) => (
+				{items.map((item, index) => (
 					<Content
 						key={index}
 						style={{
-							backgroundImage: `url(${detail})`
+							backgroundImage: `url(${item})`
 						}}
 					/>
 				))}

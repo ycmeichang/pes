@@ -9,26 +9,27 @@ const Container = styled.main`
 const Wrap = styled.div`
 	display: flex;
 	flex-wrap: wrap;
-	div {
-		flex-basis: 33%;
-		text-align: center;
-		border: 1px solid;
-		margin-right: -1px;
-		margin-bottom: -1px;
-		position: relative;
-		:before {
-			content: '';
-			float: left;
-			padding-top: 100%;
-		}
-		a {
-			margin: 0;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			-ms-transform: translate(-50%, -50%);
-			transform: translate(-50%, -50%);
-		}
+`
+
+const Content = styled.div`
+	flex-basis: 33%;
+	text-align: center;
+	border: 1px solid;
+	margin-right: -1px;
+	margin-bottom: -1px;
+	position: relative;
+	:before {
+		content: '';
+		float: left;
+		padding-top: 100%;
+	}
+	a {
+		margin: 0;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		-ms-transform: translate(-50%, -50%);
+		transform: translate(-50%, -50%);
 	}
 `
 
@@ -41,9 +42,9 @@ const BlockContent = ({ breeds }) => {
 					<hr />
 					<Wrap>
 						{breeds[key].map((breed, index) => (
-							<div key={index}>
+							<Content key={index}>
 								<Link to={`/${breed}`}>{breed}</Link>
-							</div>
+							</Content>
 						))}
 					</Wrap>
 				</div>

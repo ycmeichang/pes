@@ -21,7 +21,7 @@ const BreedDetail = () => {
 		},
 		[ id ]
 	)
-	return <BlockImage title={id} detail={images} />
+	return <BlockImage title={id} items={images} />
 }
 
 export default BreedDetail
