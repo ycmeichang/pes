@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import BlockImage from './BlockImage'
+import Block from './Block'
 
 const BreedDetail = () => {
 	const { id } = useParams()
 	const [ images, setImages ] = useState([])
 	const [ hasError, setHasError ] = useState(false)
+	const type = 'image'
 	useEffect(
 		() => {
 			const fetchData = async () => {
@@ -21,7 +22,7 @@ const BreedDetail = () => {
 		},
 		[ id ]
 	)
-	return <BlockImage title={id} items={images} />
+	return <Block title={id} items={images} type={type} />
 }
 
 export default BreedDetail

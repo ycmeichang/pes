@@ -10,10 +10,10 @@ const Wrap = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 `
-
 const Content = styled.div`
 	flex-basis: 33%;
 	text-align: center;
+	vertical-align: middle;
 	border: 1px solid;
 	margin-right: -1px;
 	margin-bottom: -1px;
@@ -31,26 +31,31 @@ const Content = styled.div`
 		-ms-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 	}
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
 `
 
-const BlockContent = ({ breeds }) => {
+const Block = ({ title, items, type }) => {
 	return (
 		<Container>
-			{Object.keys(breeds).map((key) => (
-				<div key={key}>
-					<h4>{key}</h4>
-					<hr />
-					<Wrap>
-						{breeds[key].map((breed, index) => (
-							<Content key={index}>
-								<Link to={`/${breed}`}>{breed}</Link>
-							</Content>
-						))}
-					</Wrap>
-				</div>
-			))}
+			<h4>{type === 'image' ? `Breed: ${title}` : title}</h4>
+			<hr />
+			{type === 'image' ? (
+				<Wrap>
+					{items.map((item, index) => <Content key={index} style={{ backgroundImage: `url(${item})` }} />)}
+				</Wrap>
+			) : (
+				<Wrap>
+					{items.map((item, index) => (
+						<Content key={index}>
+							<Link to={`/${item}`}>{item}</Link>
+						</Content>
+					))}
+				</Wrap>
+			)}
 		</Container>
 	)
 }
 
-export default BlockContent
+export default Block

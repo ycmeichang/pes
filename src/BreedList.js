@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
-import BlockContent from './BlockContent'
+import Block from './Block'
 
 class BreedList extends Component {
-	state = { firstLetter: '' }
+	state = { type: 'link' }
 	handleChange = ({ target: { value } }) => {
-		this.setState({ firstLetter: value })
 		this.props.handleFilter(value)
 	}
 	render() {
 		const { breeds } = this.props
-		const { firstLetter } = this.state
+		const { type } = this.state
 		const letters = []
 		const groupedBreeds = {}
 		for (let i = 65; i <= 90; i++) {
@@ -21,12 +20,12 @@ class BreedList extends Component {
 			groupedBreeds[key] = groupedBreeds[key].concat(breeds[i])
 		}
 		return (
-			<>
+			<div>
 				{letters.map((letter, index) => (
 					<input key={index} type='button' value={letter} onClick={this.handleChange} />
 				))}
-				<BlockContent breeds={groupedBreeds} />
-			</>
+				{Object.keys(groupedBreeds).map((key) => <Block items={groupedBreeds[key]} title={key} type={type} />)}
+			</div>
 		)
 	}
 }
