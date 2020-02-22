@@ -27,14 +27,36 @@ const Image = styled.div`
 	background-size: cover;
 `
 
-const BreedDetail = () => {
+// class Breed extends Component {
+// 	this.state = { images: [] }
+
+// 	const handle = () => {
+// 		const images = []
+// 		this.setState({ images})
+// 	}
+// 	render() {
+// 		return //
+// 	}
+// }
+const Breed = () => {
 	const { id } = useParams()
 	const [ images, setImages ] = useState([])
 	const [ hasError, setHasError ] = useState(false)
+	// const fetchData = async () => {
+	// 	try {
+	// 		const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
+	// 		const json = await response.json()
+	// 		setImages(json.message)
+	// 	} catch (error) {
+	// 		setHasError(error)
+	// 	}
+	// }
+	// useEffect(() => fetchData(), [ id ])
 	useEffect(
 		() => {
 			const fetchData = async () => {
 				try {
+					//await promise to be either resolved/rejected
 					const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
 					const json = await response.json()
 					setImages(json.status === 'error' ? [] : json.message)
@@ -50,18 +72,34 @@ const BreedDetail = () => {
 		<Container>
 			<h4>Breed: {id}</h4>
 			<hr />
-			<List>
-				{images.map((image, index) => (
-					<Image
-						key={index}
-						style={{
-							backgroundImage: `url(${image})`
-						}}
-					/>
+			{images
+				.reduce((acc, _, idx, src) => {
+					if (idx % 3 === 0) {
+						acc.push(src.slice(idx, idx + 3))
+					}
+					return acc
+				}, [])
+				.map((images, index) => (
+					<List key={index}>
+						<Image
+							style={{
+								backgroundImage: `url(${images[0]})`
+							}}
+						/>
+						<Image
+							style={{
+								backgroundImage: `url(${images[1]})`
+							}}
+						/>
+						<Image
+							style={{
+								backgroundImage: `url(${images[2]})`
+							}}
+						/>
+					</List>
 				))}
-			</List>
 		</Container>
 	)
 }
 
-export default BreedDetail
+export default Breed
