@@ -32,7 +32,7 @@ const List = styled.div`
 	}
 `
 
-class Breeds extends Component {
+class BreedList extends Component {
 	state = { firstLetter: '' }
 	handleChange = ({ target: { value } }) => {
 		this.setState({ firstLetter: value })
@@ -128,4 +128,4 @@ class Breeds extends Component {
 	}
 }
 
-export default Breeds
+export default BreedList

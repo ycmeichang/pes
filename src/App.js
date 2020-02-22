@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './Header'
-import Breeds from './Breeds'
-import Breed from './Breed'
+import BreedList from './BreedList'
+import BreedDetail from './BreedDetail'
 
 const Container = styled.div`margin: 1.25em;`
 
@@ -42,9 +42,9 @@ class App extends Component {
 				<Header />
 				<Router>
 					<Switch>
-						<Route path='/:id' children={<Breed />} />
+						<Route path='/:id' children={<BreedDetail />} />
 						<Route path='/'>
-							<Breeds breeds={breeds} handleFilter={this.handleFilter} />
+							<BreedList breeds={breeds} handleFilter={this.handleFilter} />
 						</Route>
 					</Switch>
 				</Router>

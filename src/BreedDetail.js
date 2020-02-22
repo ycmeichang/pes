@@ -38,7 +38,7 @@ const Image = styled.div`
 // 		return //
 // 	}
 // }
-const Breed = () => {
+const BreedDetail = () => {
 	const { id } = useParams()
 	const [ images, setImages ] = useState([])
 	const [ hasError, setHasError ] = useState(false)
@@ -102,4 +102,4 @@ const Breed = () => {
 	)
 }
 
-export default Breed
+export default BreedDetail
