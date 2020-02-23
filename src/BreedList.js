@@ -1,35 +1,35 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import Block from './Block'
 
-class BreedList extends Component {
-	state = { type: 'link' }
-	handleChange = ({ target: { value } }) => {
-		this.props.handleFilter(value)
-	}
-	render() {
-		const { breeds } = this.props
-		const { type } = this.state
-		const letters = []
-		const groupedBreeds = {}
-		for (let i = 65; i <= 90; i++) {
-			letters.push(String.fromCharCode(i))
-			groupedBreeds[String.fromCharCode(i).toLowerCase()] = []
+const BreedList = () => {
+	const [ breeds, setBreeds ] = useState({})
+	const [ hasError, setHasError ] = useState(false)
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch('https://dog.ceo/api/breeds/list/all')
+				const json = await response.json()
+				const breeds = Object.keys(json.message)
+				const groupedBreed = {}
+				for (let i = 0; i < breeds.length; i++) {
+					const key = breeds[i].charAt(0)
+					groupedBreed[key] = (groupedBreed[key] || []).concat(breeds[i])
+				}
+				setBreeds(groupedBreed)
+			} catch (error) {
+				setHasError(error)
+			}
 		}
-		for (let i = 0; i < breeds.length; i++) {
-			const key = breeds[i].charAt(0)
-			groupedBreeds[key] = groupedBreeds[key].concat(breeds[i])
-		}
-		return (
+		fetchData()
+	}, [])
+	const { type } = 'link'
+	return (
+		<div>
 			<div>
-				{letters.map((letter, index) => (
-					<input key={index} type='button' value={letter} onClick={this.handleChange} />
-				))}
-				{Object.keys(groupedBreeds).map((key) => (
-					<Block key={key} items={groupedBreeds[key]} title={key} type={type} />
-				))}
+				{Object.keys(breeds).map((key) => <Block key={key} items={breeds[key]} title={key} type={type} />)}
 			</div>
-		)
-	}
+		</div>
+	)
 }
 
 export default BreedList
