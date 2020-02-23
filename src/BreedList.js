@@ -24,7 +24,9 @@ class BreedList extends Component {
 				{letters.map((letter, index) => (
 					<input key={index} type='button' value={letter} onClick={this.handleChange} />
 				))}
-				{Object.keys(groupedBreeds).map((key) => <Block items={groupedBreeds[key]} title={key} type={type} />)}
+				{Object.keys(groupedBreeds).map((key) => (
+					<Block key={key} items={groupedBreeds[key]} title={key} type={type} />
+				))}
 			</div>
 		)
 	}
