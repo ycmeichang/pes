@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Block from './Block'
 
-const BreedList = () => {
+const BreedList = (props) => {
+	const { filterBy } = props
+	const { type } = 'link'
 	const [ breeds, setBreeds ] = useState({})
 	const [ hasError, setHasError ] = useState(false)
 	useEffect(() => {
@@ -22,12 +24,17 @@ const BreedList = () => {
 		}
 		fetchData()
 	}, [])
-	const { type } = 'link'
 	return (
 		<div>
-			<div>
-				{Object.keys(breeds).map((key) => <Block key={key} items={breeds[key]} title={key} type={type} />)}
-			</div>
+			{filterBy === '' ? (
+				<div>
+					{Object.keys(breeds).map((key) => <Block key={key} items={breeds[key]} title={key} type={type} />)}
+				</div>
+			) : breeds[filterBy] ? (
+				<Block items={breeds[filterBy]} title={filterBy} type={type} />
+			) : (
+				[]
+			)}
 		</div>
 	)
 }
