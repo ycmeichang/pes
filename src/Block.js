@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const Container = styled.main`
+const Container = styled.section`
 	margin: 0 auto;
-	margin-bottom: 2em;
+	margin: 2em 0;
 `
 const Wrap = styled.div`
 	display: flex;
@@ -36,11 +36,21 @@ const Content = styled.div`
 	background-size: cover;
 `
 
+const Title = styled.div`
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 1em;
+	p {
+		margin-bottom: 5px;
+	}
+`
+
 const Block = ({ title, items, type }) => {
 	return (
 		<Container>
-			<h4>{type === 'image' ? `Breed: ${title}` : title}</h4>
-			<hr />
+			<Title>
+				<p>{type === 'image' ? `Breed: ${title}` : title.toUpperCase()}</p>
+			</Title>
+
 			{type === 'image' ? (
 				<Wrap>
 					{items.map((item, index) => <Content key={index} style={{ backgroundImage: `url(${item})` }} />)}
