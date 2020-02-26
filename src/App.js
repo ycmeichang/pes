@@ -5,7 +5,7 @@ import Header from './Header'
 import Filter from './Filter'
 import BreedList from './BreedList'
 import BreedDetail from './BreedDetail'
-import { Routes } from './Routes'
+import { Routes } from './routes'
 
 const Container = styled.div`margin: 0 auto;`
 const Content = styled.main`

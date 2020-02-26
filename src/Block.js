@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Routes } from './Routes'
+import { Routes } from './routes'
 
 const Container = styled.section`
 	margin: 0 auto;
@@ -35,8 +35,8 @@ const Content = styled.div`
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-image: url(${(props) => props.item});
 `
-
 const Title = styled.div`
 	border-bottom: 1px solid #ddd;
 	margin-bottom: 1em;
@@ -51,11 +51,8 @@ const Block = ({ title, items, type }) => {
 			<Title>
 				<p>{type === 'image' ? `Breed: ${title}` : title.toUpperCase()}</p>
 			</Title>
-
 			{type === 'image' ? (
-				<Wrap>
-					{items.map((item, index) => <Content key={index} style={{ backgroundImage: `url(${item})` }} />)}
-				</Wrap>
+				<Wrap>{items.map((item, index) => <Content key={index} item={item} />)}</Wrap>
 			) : (
 				<Wrap>
 					{items.map((item, index) => (
