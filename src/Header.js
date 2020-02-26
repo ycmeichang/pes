@@ -13,13 +13,16 @@ const Header = styled.header`
 	top: 0;
 	z-index: 1;
 	background: white;
-	padding-top: 1em;
-	img {
-		max-width: 30%;
+	padding: 26px 20px;
+	align-items: center;
+	h1 {
+		font-family: 'Cookie';
+		font-weight: initial;
+		margin: 0;
 	}
 	svg {
-		width: 2em;
-		height: 2.4em;
+		width: 1.6em;
+		height: 1.6em;
 	}
 	div {
 		background-color: #222;
@@ -33,6 +36,6 @@ export default () => (
 	<Header>
 		<Icon icon={dogIcon} />
 		<div />
-		<img alt='logo' src='logo.png' />
+		<h1>Pestagram</h1>
 	</Header>
 )
