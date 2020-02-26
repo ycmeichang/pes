@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { Routes } from './Routes'
 
 const Container = styled.section`
 	margin: 0 auto;
@@ -59,7 +60,7 @@ const Block = ({ title, items, type }) => {
 				<Wrap>
 					{items.map((item, index) => (
 						<Content key={index}>
-							<Link to={`/${item}`}>{item}</Link>
+							<Link to={Routes.showBreedDetail(item)}>{item}</Link>
 						</Content>
 					))}
 				</Wrap>

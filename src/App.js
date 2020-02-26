@@ -5,6 +5,7 @@ import Header from './Header'
 import Filter from './Filter'
 import BreedList from './BreedList'
 import BreedDetail from './BreedDetail'
+import { Routes } from './Routes'
 
 const Container = styled.div`margin: 0 auto;`
 const Content = styled.main`
@@ -23,6 +24,8 @@ const App = () => {
 			<Content>
 				<Router>
 					<Switch>
+						<Route path={Routes.breedDetail} children={<BreedDetail />} />
+						<Route path={Routes.root}>
 							{/* <Filter handleFilter={handleFilter} /> */}
 							<BreedList filterBy={filterBy} />
 						</Route>
