@@ -13,10 +13,15 @@ const Wrap = styled.div`
 	flex-wrap: wrap;
 `
 const Content = styled.div`
-	flex-basis: 33%;
+	flex-basis: calc(1/3*100% - (1/3)*8px);
 	text-align: center;
 	vertical-align: middle;
 	position: relative;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	:nth-child(3n) {
+		margin-right: 0;
+	}
 	:before {
 		content: '';
 		float: left;
@@ -44,7 +49,7 @@ const BreedLink = styled(Link)`
 	transform: translate(-50%, -50%);
 	color: white;
 	font-weight: 700;
-	font-size: 18px;
+	font-size: 14px;
 	text-decoration: none;
 `
 const Title = styled.div`
@@ -59,7 +64,7 @@ const Block = ({ title, items, type }) => {
 	return (
 		<Container>
 			<Title>
-				<p>{type === 'image' ? `Breed: ${title}` : title.toUpperCase()}</p>
+				<p>{title.replace(/^./, title[0].toUpperCase())}</p>
 			</Title>
 			{type === 'image' ? (
 				<Wrap>{items.map((item, index) => <Content key={index} item={item} />)}</Wrap>
@@ -68,7 +73,9 @@ const Block = ({ title, items, type }) => {
 					{items.map((item, index) => (
 						<Content key={index} item={breedList[item]}>
 							<Overlay>
-								<BreedLink to={Routes.showBreedDetail(item)}>{item}</BreedLink>
+								<BreedLink to={Routes.showBreedDetail(item)}>
+									{item.replace(/^./, item[0].toUpperCase())}
+								</BreedLink>
 							</Overlay>
 						</Content>
 					))}

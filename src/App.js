@@ -9,7 +9,7 @@ import { Routes } from './routes'
 
 const Container = styled.div`margin: 0 auto;`
 const Content = styled.main`
-	margin-top: 4em;
+	margin-top: 2em;
 	padding: 26px 20px;
 `
 
