@@ -1,4 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
+
+const Container = styled.div`
+	width: max-content;
+	input {
+		border: none;
+		font-size: 14px;
+		padding: 14px 20px;
+		border-right: 1px solid #ddd;
+	}
+`
 
 const Filter = (props) => {
 	const letters = []
@@ -7,11 +18,11 @@ const Filter = (props) => {
 	}
 	const { handleFilter } = props
 	return (
-		<div>
+		<Container id='nav'>
 			{letters.map((letter, index) => (
-				<input key={index} type='button' value={letter} onClick={(e) => handleFilter(e.target.value)} />
+				<input type='button' key={index} value={letter} onClick={(e) => handleFilter(e.target.value)} />
 			))}
-		</div>
+		</Container>
 	)
 }
 

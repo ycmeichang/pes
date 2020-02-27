@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './Header'
-import Filter from './Filter'
 import BreedList from './BreedList'
 import BreedDetail from './BreedDetail'
 import { Routes } from './routes'
@@ -15,18 +14,22 @@ const Content = styled.main`
 
 const App = () => {
 	const [ filterBy, setFilterBy ] = useState('')
+	const [ isToggle, setIsToggle ] = useState(false)
 	const handleFilter = (value) => {
 		setFilterBy(value.toLowerCase())
+		setIsToggle(!isToggle)
+	}
+	const handleToggle = () => {
+		setIsToggle(!isToggle)
 	}
 	return (
 		<Container>
-			<Header />
+			<Header handleFilter={handleFilter} handleToggle={handleToggle} isToggle={isToggle} />
 			<Content>
 				<Router>
 					<Switch>
 						<Route path={Routes.breedDetail} children={<BreedDetail />} />
 						<Route path={Routes.root}>
-							{/* <Filter handleFilter={handleFilter} /> */}
 							<BreedList filterBy={filterBy} />
 						</Route>
 					</Switch>
