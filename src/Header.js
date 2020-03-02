@@ -47,6 +47,9 @@ const Menu = styled.div`
 const Toggle = styled.div`
 	overflow-x: scroll;
 	border-bottom: 1px solid #ddd;
+	a {
+		border-right: 1px solid #ddd;
+	}
 	input {
 		border: none;
 		font-size: 14px;

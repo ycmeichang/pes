@@ -22,17 +22,17 @@ const App = () => {
 	}
 	return (
 		<Container>
-			<Header handleFilter={handleFilter} handleToggle={handleToggle} isToggle={isToggle} />
-			<Content>
-				<Router>
+			<Router>
+				<Header handleFilter={handleFilter} handleToggle={handleToggle} isToggle={isToggle} />
+				<Content>
 					<Switch>
 						<Route path={Routes.breedDetail} children={<BreedDetail />} />
 						<Route path={Routes.root}>
 							<BreedList filterBy={filterBy} />
 						</Route>
 					</Switch>
-				</Router>
-			</Content>
+				</Content>
+			</Router>
 			<Footer />
 		</Container>
 	)

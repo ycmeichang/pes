@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { Routes } from './routes'
 
 const Container = styled.div`width: max-content;`
 
@@ -12,7 +14,9 @@ const Filter = (props) => {
 	return (
 		<Container>
 			{letters.map((letter, index) => (
-				<input type='button' key={index} value={letter} onClick={(e) => handleFilter(e.target.value)} />
+				<Link to={Routes.root} key={index}>
+					<input type='button' value={letter} onClick={(e) => handleFilter(e.target.value)} />
+				</Link>
 			))}
 		</Container>
 	)
