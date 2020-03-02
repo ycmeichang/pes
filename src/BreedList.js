@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Block from './Block'
 
-const BreedList = (props) => {
-	const { filterBy } = props
+const BreedList = ({ filterBy }) => {
 	const { type } = 'link'
 	const [ breeds, setBreeds ] = useState({})
 	const [ hasError, setHasError ] = useState(false)

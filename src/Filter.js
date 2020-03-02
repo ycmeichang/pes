@@ -5,12 +5,11 @@ import { Routes } from './routes'
 
 const Container = styled.div`width: max-content;`
 
-const Filter = (props) => {
+const Filter = ({ handleFilter }) => {
 	const letters = []
 	for (let i = 65; i <= 90; i++) {
 		letters.push(String.fromCharCode(i))
 	}
-	const { handleFilter } = props
 	return (
 		<Container>
 			{letters.map((letter, index) => (

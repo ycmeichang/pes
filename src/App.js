@@ -15,7 +15,7 @@ const App = () => {
 	const [ isToggle, setIsToggle ] = useState(false)
 	const handleFilter = (value) => {
 		setFilterBy(value.toLowerCase())
-		setIsToggle(!isToggle)
+		handleToggle()
 	}
 	const handleToggle = () => {
 		setIsToggle(!isToggle)
