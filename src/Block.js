@@ -13,12 +13,11 @@ const Wrap = styled.div`
 	flex-wrap: wrap;
 `
 const Content = styled.div`
-	flex-basis: calc(1/3*100% - (1/3)*8px);
+	flex-basis: calc(1/3*100% - (1/3)*4px);
 	text-align: center;
 	vertical-align: middle;
 	position: relative;
-	margin-right: 4px;
-	margin-bottom: 4px;
+	margin: 0 2px 2px 0;
 	:nth-child(3n) {
 		margin-right: 0;
 	}
@@ -54,7 +53,7 @@ const BreedLink = styled(Link)`
 `
 const Title = styled.div`
 	border-bottom: 1px solid #ddd;
-	margin-bottom: 1em;
+	padding: 0 20px;
 	p {
 		margin-bottom: 5px;
 	}

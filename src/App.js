@@ -7,10 +7,7 @@ import BreedDetail from './BreedDetail'
 import { Routes } from './routes'
 
 const Container = styled.div`margin: 0 auto;`
-const Content = styled.main`
-	margin-top: 2em;
-	padding: 26px 20px;
-`
+const Content = styled.main`margin-top: 6em;`
 
 const App = () => {
 	const [ filterBy, setFilterBy ] = useState('')
