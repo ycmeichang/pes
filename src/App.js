@@ -11,18 +11,31 @@ const Container = styled.div`margin: 0 auto;`
 const Content = styled.main`margin: 6em 0;`
 
 const App = () => {
-	const [ filterBy, setFilterBy ] = useState('')
-	const [ isToggleFilter, setIsToggleFilter ] = useState(false)
-	const [ isToggleSearch, setIsToggleSearch ] = useState(false)
+	const [ headerState, setHeaderState ] = useState({
+		filterBy: '',
+		isFilter: false,
+		isSearch: false
+	})
 	const handleFilter = (value) => {
-		setFilterBy(value.toLowerCase())
-		handleToggleFilter()
+		setHeaderState({
+			filterBy: value.toLowerCase(),
+			isFilter: false,
+			isSearch: false
+		})
 	}
 	const handleToggleFilter = () => {
-		setIsToggleFilter(!isToggleFilter)
+		setHeaderState({
+			filterBy: '',
+			isFilter: !headerState.isFilter,
+			isSearch: false
+		})
 	}
 	const handleToggleSearch = () => {
-		setIsToggleSearch(!isToggleSearch)
+		setHeaderState({
+			filterBy: '',
+			isFilter: false,
+			isSearch: !headerState.isSearch
+		})
 	}
 	return (
 		<Container>
@@ -31,14 +44,14 @@ const App = () => {
 					handleFilter={handleFilter}
 					handleToggleFilter={handleToggleFilter}
 					handleToggleSearch={handleToggleSearch}
-					isToggleFilter={isToggleFilter}
-					isToggleSearch={isToggleSearch}
+					isToggleFilter={headerState.isFilter}
+					isToggleSearch={headerState.isSearch}
 				/>
 				<Content>
 					<Switch>
 						<Route path={Routes.breedDetail} children={<BreedDetail />} />
 						<Route path={Routes.root}>
-							<BreedList filterBy={filterBy} />
+							<BreedList filterBy={headerState.filterBy} />
 						</Route>
 					</Switch>
 				</Content>

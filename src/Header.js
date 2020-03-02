@@ -69,20 +69,10 @@ const Header = ({ handleFilter, handleToggleFilter, handleToggleSearch, isToggle
 					<HeaderIcon icon={listFilter} onClick={handleToggleFilter} />
 				</Menu>
 			</Wrap>
-			{isToggleFilter ? (
-				<Toggle>
-					<Filter handleFilter={handleFilter} />
-				</Toggle>
-			) : (
-				''
-			)}
-			{isToggleSearch ? (
-				<Toggle>
-					<Search handleToggleSearch={handleToggleSearch} />
-				</Toggle>
-			) : (
-				''
-			)}
+			<Toggle>
+				{isToggleFilter && <Filter handleFilter={handleFilter} />}
+				{isToggleSearch && <Search handleToggleSearch={handleToggleSearch} />}
+			</Toggle>
 		</Container>
 	)
 }
