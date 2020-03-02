@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Header from './Header'
+import Footer from './Footer'
 import BreedList from './BreedList'
 import BreedDetail from './BreedDetail'
 import { Routes } from './routes'
@@ -32,6 +33,7 @@ const App = () => {
 					</Switch>
 				</Router>
 			</Content>
+			<Footer />
 		</Container>
 	)
 }
