@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import Icon from '@iconify/react'
 import dogIcon from '@iconify/icons-cil/dog'
 import listFilter from '@iconify/icons-cil/list-filter'
+import magnifyingGlass from '@iconify/icons-cil/magnifying-glass'
 import Filter from './Filter'
+import Search from './Search'
 
 const Container = styled.header`
 	position: fixed;
@@ -12,8 +14,12 @@ const Container = styled.header`
 	overflow: hidden;
 	z-index: 1;
 	background: white;
-	svg {
-		font-size: 1.6em;
+`
+const HeaderIcon = styled(Icon)`
+	font-size: 1.6em;
+	margin-left: 15px;
+	:first-child {
+		margin: 0;
 	}
 `
 const Wrap = styled.div`
@@ -47,40 +53,32 @@ const Menu = styled.div`
 const Toggle = styled.div`
 	overflow-x: scroll;
 	border-bottom: 1px solid #ddd;
-	a {
-		border-right: 1px solid #ddd;
-	}
-	input {
-		border: none;
-		font-size: 14px;
-		padding: 15px 30px;
-		border-right: 1px solid #ddd;
-		:last-child {
-			border: none;
-		}
-		:focus {
-			outline: none;
-		}
-	}
 `
 
-const Header = (props) => {
-	const { handleFilter, handleToggle, isToggle } = props
+const Header = ({ handleFilter, handleToggleFilter, handleToggleSearch, isToggleFilter, isToggleSearch }) => {
 	return (
 		<Container>
 			<Wrap>
 				<Logo href='/'>
-					<Icon icon={dogIcon} />
+					<HeaderIcon icon={dogIcon} />
 					<div />
 					<h1>Pestagram</h1>
 				</Logo>
 				<Menu>
-					<Icon icon={listFilter} onClick={handleToggle} />
+					<HeaderIcon icon={magnifyingGlass} onClick={handleToggleSearch} />
+					<HeaderIcon icon={listFilter} onClick={handleToggleFilter} />
 				</Menu>
 			</Wrap>
-			{isToggle ? (
+			{isToggleFilter ? (
 				<Toggle>
-					<Filter handleFilter={handleFilter} handleToggle={handleToggle} />
+					<Filter handleFilter={handleFilter} />
+				</Toggle>
+			) : (
+				''
+			)}
+			{isToggleSearch ? (
+				<Toggle>
+					<Search handleToggleSearch={handleToggleSearch} />
 				</Toggle>
 			) : (
 				''

@@ -8,22 +8,32 @@ import BreedDetail from './BreedDetail'
 import { Routes } from './routes'
 
 const Container = styled.div`margin: 0 auto;`
-const Content = styled.main`margin-top: 6em;`
+const Content = styled.main`margin: 6em 0;`
 
 const App = () => {
 	const [ filterBy, setFilterBy ] = useState('')
-	const [ isToggle, setIsToggle ] = useState(false)
+	const [ isToggleFilter, setIsToggleFilter ] = useState(false)
+	const [ isToggleSearch, setIsToggleSearch ] = useState(false)
 	const handleFilter = (value) => {
 		setFilterBy(value.toLowerCase())
-		handleToggle()
+		handleToggleFilter()
 	}
-	const handleToggle = () => {
-		setIsToggle(!isToggle)
+	const handleToggleFilter = () => {
+		setIsToggleFilter(!isToggleFilter)
+	}
+	const handleToggleSearch = () => {
+		setIsToggleSearch(!isToggleSearch)
 	}
 	return (
 		<Container>
 			<Router>
-				<Header handleFilter={handleFilter} handleToggle={handleToggle} isToggle={isToggle} />
+				<Header
+					handleFilter={handleFilter}
+					handleToggleFilter={handleToggleFilter}
+					handleToggleSearch={handleToggleSearch}
+					isToggleFilter={isToggleFilter}
+					isToggleSearch={isToggleSearch}
+				/>
 				<Content>
 					<Switch>
 						<Route path={Routes.breedDetail} children={<BreedDetail />} />
