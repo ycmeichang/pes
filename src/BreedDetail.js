@@ -13,7 +13,7 @@ const BreedDetail = () => {
 				try {
 					const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
 					const json = await response.json()
-					setImages(json.status === 'error' ? [] : json.message.slice(0, 3))
+					setImages(json.status === 'error' ? [] : json.message.slice(0, 9))
 				} catch (error) {
 					setHasError(error)
 				}
