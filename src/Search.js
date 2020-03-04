@@ -8,7 +8,7 @@ const Container = styled.div`
 	input {
 		flex-basis: 75%;
 		padding: 1em 2em;
-		font-size: 14px;
+		font-size: 18px;
 		border: none;
 	}
 	button {
