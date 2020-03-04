@@ -62,9 +62,6 @@ const Title = styled.div`
 const Block = ({ title, items, type }) => {
 	return (
 		<Container>
-			<Title>
-				<p>{title.replace(/^./, title[0].toUpperCase())}</p>
-			</Title>
 			{type === 'image' ? (
 				<Wrap>{items.map((item, index) => <Content key={index} item={item} />)}</Wrap>
 			) : (

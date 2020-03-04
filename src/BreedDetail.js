@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import BreedInfo from './BreedInfo'
 import Block from './Block'
 
 const BreedDetail = () => {
@@ -22,7 +23,12 @@ const BreedDetail = () => {
 		},
 		[ id ]
 	)
-	return <Block title={id} items={images} type={type} />
+	return (
+		<div>
+			<BreedInfo avatar={images[0]} breed={id} />
+			<Block title={id} items={images} type={type} />
+		</div>
+	)
 }
 
 export default BreedDetail
