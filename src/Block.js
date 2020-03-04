@@ -53,10 +53,21 @@ const BreedLink = styled(Link)`
 	font-size: 14px;
 	text-decoration: none;
 `
+const Title = styled.div`
+	text-transform: capitalize;
+	border-bottom: 1px solid #ddd;
+	padding: 0 20px;
+	h2 {
+		margin-bottom: 5px;
+	}
+`
 
-const Block = ({ items, type }) => {
+const Block = ({ title, items, type }) => {
 	return (
 		<Container>
+			<Title>
+				<h2>{title}</h2>
+			</Title>
 			{type === 'image' ? (
 				<Wrap>
 					{items.map((item, index) => (
