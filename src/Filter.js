@@ -8,7 +8,7 @@ const Container = styled.div`
 	input {
 		border: none;
 		border-right: 1px solid #ddd;
-		font-size: 14px;
+		font-size: 18px;
 		padding: 15px 30px;
 		:focus {
 			outline: none;

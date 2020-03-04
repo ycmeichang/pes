@@ -23,6 +23,7 @@ const Title = styled.div`
 		margin: 0;
 		margin-bottom: .25rem;
 		font-weight: normal;
+		font-size: 1.8em;
 	}
 `
 const Button = styled.button`

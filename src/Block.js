@@ -70,7 +70,7 @@ const Block = ({ title, items, type }) => {
 			</Title>
 			{type === 'image' ? (
 				<Wrap>
-					{items.map((item, index) => (
+					{items.splice(1).map((item, index) => (
 						<Content key={index} item={item}>
 							<Paw />
 						</Content>

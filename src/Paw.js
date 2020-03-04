@@ -7,7 +7,7 @@ const PawIcon = styled(Icon)`
 	position: absolute;
 	right: 2%;
 	bottom: 2%;
-	font-size: 2em;
+	font-size: 1.8em;
   color: ${(props) => (props.clicked ? 'white' : 'black')};
 `
 
