@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { Routes } from './routes'
 import { breedList } from './list'
+import Paw from './Paw'
 
 const Container = styled.section`
 	margin: 0 auto;
@@ -13,6 +14,7 @@ const Wrap = styled.div`
 	flex-wrap: wrap;
 `
 const Content = styled.div`
+	position: relative;
 	flex-basis: calc(1/3*100% - (1/3)*4px);
 	text-align: center;
 	vertical-align: middle;
@@ -52,11 +54,17 @@ const BreedLink = styled(Link)`
 	text-decoration: none;
 `
 
-const Block = ({ title, items, type }) => {
+const Block = ({ items, type }) => {
 	return (
 		<Container>
 			{type === 'image' ? (
-				<Wrap>{items.map((item, index) => <Content key={index} item={item} />)}</Wrap>
+				<Wrap>
+					{items.map((item, index) => (
+						<Content key={index} item={item}>
+							<Paw />
+						</Content>
+					))}
+				</Wrap>
 			) : (
 				<Wrap>
 					{items.map((item, index) => (
