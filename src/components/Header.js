@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import Icon from '@iconify/react'
 import dogIcon from '@iconify/icons-cil/dog'
+import { Routes } from '../routes'
 
 const Wrap = styled.header`
 	position: fixed;
@@ -24,7 +26,7 @@ const FlexContainer = styled.div`
 	border-bottom: 1px solid #ddd;
 	padding: 14px 20px;
 `
-const Logo = styled.a`
+const StyledLink = styled(Link)`
 	color: inherit;
 	text-decoration: none;
 	display: flex;
@@ -47,11 +49,11 @@ const Header = () => {
 	return (
 		<Wrap>
 			<FlexContainer>
-				<Logo href='/'>
+				<StyledLink to={Routes.root}>
 					<HeaderIcon icon={dogIcon} />
 					<div />
 					<h1>Pestagram</h1>
-				</Logo>
+				</StyledLink>
 			</FlexContainer>
 		</Wrap>
 	)
