@@ -6,6 +6,7 @@ import Block from './Block'
 const BreedDetail = () => {
 	const { id } = useParams()
 	const [ images, setImages ] = useState([])
+	const [ avatar, setAvatar ] = useState('')
 	const [ hasError, setHasError ] = useState(false)
 	const type = 'image'
 	useEffect(
@@ -14,7 +15,8 @@ const BreedDetail = () => {
 				try {
 					const response = await fetch(`https://dog.ceo/api/breed/${id}/images`)
 					const json = await response.json()
-					setImages(json.status === 'error' ? [] : json.message.slice(0, 10))
+					setImages(json.status === 'error' ? [] : json.message.slice(1, 10))
+					setAvatar(json.status === 'error' ? '' : json.message.slice(0, 1))
 				} catch (error) {
 					setHasError(error)
 				}
@@ -25,7 +27,7 @@ const BreedDetail = () => {
 	)
 	return (
 		<div>
-			<BreedInfo avatar={images[0]} breed={id} />
+			<BreedInfo avatar={avatar} breed={id} />
 			<Block items={images} type={type} />
 		</div>
 	)
