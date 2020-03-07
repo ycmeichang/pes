@@ -5,10 +5,7 @@ import { Routes } from './routes'
 import { breedList } from './list'
 import Paw from './Paw'
 
-const Container = styled.section`
-	margin: 0 auto;
-	margin: 2em 0;
-`
+const Container = styled.section`margin: 0 auto;`
 const Wrap = styled.div`
 	display: flex;
 	flex-wrap: wrap;

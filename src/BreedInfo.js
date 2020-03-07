@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Container = styled.div`
-	padding: 14px 20px;
+	padding: 5px 20px;
 	display: flex;
 	align-items: flex-start;
 `
@@ -17,13 +17,13 @@ const Avatar = styled.div`
 `
 const Title = styled.div`
 	flex-direction: column;
-	margin-left: 1.5em;
+	margin-left: 1em;
 	text-transform: capitalize;
 	h1 {
 		margin: 0;
 		margin-bottom: .25rem;
 		font-weight: normal;
-		font-size: 1.8em;
+		font-size: 1.6em;
 	}
 `
 const Button = styled.button`
