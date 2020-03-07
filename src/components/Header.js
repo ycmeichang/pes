@@ -7,7 +7,7 @@ import magnifyingGlass from '@iconify/icons-cil/magnifying-glass'
 import Filter from './Filter'
 import Search from './Search'
 
-const Container = styled.header`
+const Wrap = styled.header`
 	position: fixed;
 	width: 100%;
 	top: 0;
@@ -22,7 +22,7 @@ const HeaderIcon = styled(Icon)`
 		margin: 0;
 	}
 `
-const Wrap = styled.div`
+const FlexContainer = styled.div`
 	display: flex;
 	align-items: center;
 	border-bottom: 1px solid #ddd;
@@ -57,8 +57,8 @@ const Toggle = styled.div`
 
 const Header = ({ handleFilter, handleToggleFilter, handleToggleSearch, isToggleFilter, isToggleSearch }) => {
 	return (
-		<Container>
-			<Wrap>
+		<Wrap>
+			<FlexContainer>
 				<Logo href='/'>
 					<HeaderIcon icon={dogIcon} />
 					<div />
@@ -68,12 +68,12 @@ const Header = ({ handleFilter, handleToggleFilter, handleToggleSearch, isToggle
 					<HeaderIcon icon={magnifyingGlass} onClick={handleToggleSearch} />
 					<HeaderIcon icon={listFilter} onClick={handleToggleFilter} />
 				</Menu>
-			</Wrap>
+			</FlexContainer>
 			<Toggle>
 				{isToggleFilter && <Filter handleFilter={handleFilter} />}
 				{isToggleSearch && <Search handleToggleSearch={handleToggleSearch} />}
 			</Toggle>
-		</Container>
+		</Wrap>
 	)
 }
 

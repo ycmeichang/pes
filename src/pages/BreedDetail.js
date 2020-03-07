@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import BreedInfo from '../components/BreedInfo'
 import Block from '../components/Block'
+import { Container } from '../components/Container'
 
 const BreedDetail = () => {
 	const { id } = useParams()
@@ -26,10 +27,10 @@ const BreedDetail = () => {
 		[ id ]
 	)
 	return (
-		<div>
+		<Container>
 			<BreedInfo avatar={avatar} breed={id} />
 			<Block items={images} type={type} />
-		</div>
+		</Container>
 	)
 }
 

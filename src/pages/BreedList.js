@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Block from '../components/Block'
+import { Container } from '../components/Container'
 
 const BreedList = ({ filterBy }) => {
 	const { type } = 'link'
@@ -24,7 +25,7 @@ const BreedList = ({ filterBy }) => {
 		fetchData()
 	}, [])
 	return (
-		<div>
+		<Container>
 			{filterBy === '' ? (
 				<div>
 					{Object.keys(breeds).map((key) => <Block key={key} items={breeds[key]} title={key} type={type} />)}
@@ -34,7 +35,7 @@ const BreedList = ({ filterBy }) => {
 			) : (
 				[]
 			)}
-		</div>
+		</Container>
 	)
 }
 
