@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Routes } from './routes'
-import { breedList } from './list'
+import { Routes } from '../routes'
+import { breedList } from '../list'
 import Paw from './Paw'
 
 const Container = styled.section`margin: 0 auto;`

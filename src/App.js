@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
-import BreedList from './BreedList'
-import BreedDetail from './BreedDetail'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import BreedList from './pages/BreedList'
+import BreedDetail from './pages/BreedDetail'
 import { Routes } from './routes'
 
 const Container = styled.div`margin: 0 auto;`

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import BreedInfo from './BreedInfo'
-import Block from './Block'
+import BreedInfo from '../components/BreedInfo'
+import Block from '../components/Block'
 
 const BreedDetail = () => {
 	const { id } = useParams()
