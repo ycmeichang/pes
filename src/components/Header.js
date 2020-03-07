@@ -2,10 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Icon from '@iconify/react'
 import dogIcon from '@iconify/icons-cil/dog'
-import listFilter from '@iconify/icons-cil/list-filter'
-import magnifyingGlass from '@iconify/icons-cil/magnifying-glass'
-import Filter from './Filter'
-import Search from './Search'
 
 const Wrap = styled.header`
 	position: fixed;
@@ -46,16 +42,8 @@ const Logo = styled.a`
 		width: 1px;
 	}
 `
-const Menu = styled.div`
-	flex: 1;
-	text-align: right;
-`
-const Toggle = styled.div`
-	overflow-x: scroll;
-	border-bottom: 1px solid #ddd;
-`
 
-const Header = ({ handleFilter, handleToggleFilter, handleToggleSearch, isToggleFilter, isToggleSearch }) => {
+const Header = () => {
 	return (
 		<Wrap>
 			<FlexContainer>
@@ -64,15 +52,7 @@ const Header = ({ handleFilter, handleToggleFilter, handleToggleSearch, isToggle
 					<div />
 					<h1>Pestagram</h1>
 				</Logo>
-				<Menu>
-					<HeaderIcon icon={magnifyingGlass} onClick={handleToggleSearch} />
-					<HeaderIcon icon={listFilter} onClick={handleToggleFilter} />
-				</Menu>
 			</FlexContainer>
-			<Toggle>
-				{isToggleFilter && <Filter handleFilter={handleFilter} />}
-				{isToggleSearch && <Search handleToggleSearch={handleToggleSearch} />}
-			</Toggle>
 		</Wrap>
 	)
 }
