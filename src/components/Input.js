@@ -11,7 +11,7 @@ const StyledInput = styled.input`
 `
 
 const Input = ({ handleSearch, search }) => (
-	<StyledInput autofocus placeholder='Search Breed' value={search} onChange={handleSearch} />
+	<StyledInput autoFocus placeholder='Search Breed' value={search} onChange={handleSearch} />
 )
 
 export default Input
