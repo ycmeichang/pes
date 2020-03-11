@@ -8,21 +8,19 @@ import { Routes } from './routes'
 import GlobalStyles from './globalStyles'
 
 const App = () => {
-	return (
-		<React.Fragment>
-			<GlobalStyles />
-			<Router>
-				<Header />
-				<Switch>
-					<Route path={Routes.breedDetail} children={<BreedDetail />} />
-					<Route path={Routes.root}>
-						<BreedList />
-					</Route>
-				</Switch>
-			</Router>
-			<Footer />
-		</React.Fragment>
-	)
+  return (
+    <>
+      <GlobalStyles />
+      <Router>
+        <Header />
+        <Switch>
+          <Route path={Routes.breedDetail} component={BreedDetail} />
+          <Route path={Routes.root} component={BreedList} />
+        </Switch>
+      </Router>
+      <Footer />
+    </>
+  )
 }
 
 export default App
